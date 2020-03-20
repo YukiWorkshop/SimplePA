@@ -1,4 +1,5 @@
 # SimplePA
+[![pipeline status](https://gitlab.com/ReimuNotMoe/SimplePA/badges/master/pipeline.svg)](https://gitlab.com/ReimuNotMoe/SimplePA/-/commits/master)
 
 Very easy-to-use C++ PulseAudio client library.
 
@@ -89,7 +90,9 @@ p.open();
 p.run([](SimplePA::Player &player, std::vector<uint8_t> &buf) {
     // Put your audio data into buffer
     // You can resize the buffer to any size you like
-    // You can call player.drain() here to ensure audio had been played on device
+
+    // You can call player.drain() here to ensure last piece of audio 
+    // had been played on device.
 
     // Return true for valid data & call the callback once more.
     // Return false to end processing. 
@@ -118,6 +121,8 @@ std::thread t([&](){
     });
 });
 ```
+
+See `test.cpp` for a simple demo!
 
 ## FAQ
 #### Why don't you use the async interface offered by libpulse?
